@@ -1,0 +1,12 @@
+# Hand-maintained; the generator must not overwrite these.
+README.md
+LICENSE
+composer.json
+phpunit.xml.dist
+.gitignore
+.github/**
+.travis.yml
+git_push.sh
+test/**
+tests/**
+.php-cs-fixer.dist.php

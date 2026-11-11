@@ -1,0 +1,44 @@
+# # Book
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**isbn10** | **string** |  | [optional]
+**isbn13** | **string** |  | [optional]
+**workId** | **int** |  | [optional]
+**title** | **string** |  | [optional]
+**subtitle** | **string** |  | [optional]
+**numberOfPages** | **int** |  | [optional]
+**description** | **string** |  | [optional]
+**publishers** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
+**imprint** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
+**publishDate** | **\DateTime** |  | [optional]
+**physicalFormat** | **string** |  | [optional]
+**covers** | **string[]** |  | [optional]
+**authors** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
+**contributors** | [**\ISBNLab\Model\Contributor[]**](Contributor.md) |  | [optional]
+**subjects** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
+**series** | [**\ISBNLab\Model\Series**](Series.md) |  | [optional]
+**genres** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
+**otherEditions** | [**\ISBNLab\Model\EditionRef[]**](EditionRef.md) |  | [optional]
+**previousEdition** | [**\ISBNLab\Model\EditionRef**](EditionRef.md) |  | [optional]
+**nextEdition** | [**\ISBNLab\Model\EditionRef**](EditionRef.md) |  | [optional]
+**physicalDimensions** | **string** |  | [optional]
+**ratings** | [**\ISBNLab\Model\Ratings**](Ratings.md) |  | [optional]
+**language** | **string** |  | [optional]
+**saleStatus** | **string** |  | [optional]
+**excerpt** | **string** |  | [optional]
+**reviewQuotes** | **string** |  | [optional]
+**retailLinks** | [**\ISBNLab\Model\RetailLink[]**](RetailLink.md) |  | [optional]
+**categories** | [**\ISBNLab\Model\Category[]**](Category.md) |  | [optional]
+**aiSummary** | **string** |  | [optional]
+**canonicalEditionId** | **int** |  | [optional]
+**languageCode** | **string** |  | [optional]
+**publishDatePrecision** | **string** |  | [optional]
+**estimatedReadTime** | **int** |  | [optional]
+**languagesCount** | **int** |  | [optional]
+**link** | **string** |  | [optional]
+**isbnModel** | [**\ISBNLab\Model\IsbnDetails**](IsbnDetails.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

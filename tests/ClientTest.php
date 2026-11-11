@@ -38,10 +38,12 @@ final class ClientTest extends TestCase
         $this->assertRequest('/api/book/isbn/9780765302304');
         self::assertInstanceOf(Model\Book::class, $book);
         self::assertSame('The Gathering Storm', $book->getTitle());
+        self::assertSame(15596406, $book->getId());
         self::assertSame('9780765302304', $book->getIsbn13());
         self::assertSame('Robert Jordan', $book->getAuthors()[0]->getName());
         self::assertInstanceOf(\DateTime::class, $book->getPublishDate());
         self::assertInstanceOf(Model\Series::class, $book->getSeries());
+        self::assertSame(12, $book->getSeries()->getNumber());
         self::assertInstanceOf(Model\EditionRef::class, $book->getOtherEditions()[0]);
         self::assertInstanceOf(Model\IsbnDetails::class, $book->getIsbnModel());
     }
@@ -82,6 +84,8 @@ final class ClientTest extends TestCase
         $author = (new AuthorsApi($this->client('author.json'), $this->config()))->findAuthor('Robert Jordan');
         $this->assertRequest('/api/author/search/Robert%20Jordan');
         self::assertSame('Robert Jordan', $author->getName());
+        self::assertInstanceOf(Model\AuthorPhoto::class, $author->getPhotos()[0]);
+        self::assertSame(330, $author->getPhotos()[0]->getWidth());
 
         $publishers = (new PublishersApi($this->client('publishers-by-prefix.json'), $this->config()))->getPublishersByPrefix('978-0-7653');
         $this->assertRequest('/api/publisher/prefix/978-0-7653');

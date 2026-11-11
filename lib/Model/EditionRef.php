@@ -62,7 +62,10 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'string',
         'title' => 'string',
         'slug' => 'string',
-        'published' => 'string'
+        'published' => 'string',
+        'physicalFormat' => 'string',
+        'pages' => 'int',
+        'imprint' => 'string'
     ];
 
     /**
@@ -77,7 +80,10 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => null,
         'title' => null,
         'slug' => null,
-        'published' => null
+        'published' => null,
+        'physicalFormat' => null,
+        'pages' => null,
+        'imprint' => null
     ];
 
     /**
@@ -90,7 +96,10 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => true,
         'title' => true,
         'slug' => true,
-        'published' => true
+        'published' => true,
+        'physicalFormat' => true,
+        'pages' => true,
+        'imprint' => true
     ];
 
     /**
@@ -183,7 +192,10 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'isbn13',
         'title' => 'title',
         'slug' => 'slug',
-        'published' => 'published'
+        'published' => 'published',
+        'physicalFormat' => 'physicalFormat',
+        'pages' => 'pages',
+        'imprint' => 'imprint'
     ];
 
     /**
@@ -196,7 +208,10 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'setIsbn13',
         'title' => 'setTitle',
         'slug' => 'setSlug',
-        'published' => 'setPublished'
+        'published' => 'setPublished',
+        'physicalFormat' => 'setPhysicalFormat',
+        'pages' => 'setPages',
+        'imprint' => 'setImprint'
     ];
 
     /**
@@ -209,7 +224,10 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'getIsbn13',
         'title' => 'getTitle',
         'slug' => 'getSlug',
-        'published' => 'getPublished'
+        'published' => 'getPublished',
+        'physicalFormat' => 'getPhysicalFormat',
+        'pages' => 'getPages',
+        'imprint' => 'getImprint'
     ];
 
     /**
@@ -274,6 +292,9 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('published', $data ?? [], null);
+        $this->setIfExists('physicalFormat', $data ?? [], null);
+        $this->setIfExists('pages', $data ?? [], null);
+        $this->setIfExists('imprint', $data ?? [], null);
     }
 
     /**
@@ -484,6 +505,108 @@ class EditionRef implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['published'] = $published;
+
+        return $this;
+    }
+
+    /**
+     * Gets physicalFormat
+     *
+     * @return string|null
+     */
+    public function getPhysicalFormat()
+    {
+        return $this->container['physicalFormat'];
+    }
+
+    /**
+     * Sets physicalFormat
+     *
+     * @param string|null $physicalFormat physicalFormat
+     *
+     * @return self
+     */
+    public function setPhysicalFormat($physicalFormat)
+    {
+        if (is_null($physicalFormat)) {
+            array_push($this->openAPINullablesSetToNull, 'physicalFormat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('physicalFormat', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['physicalFormat'] = $physicalFormat;
+
+        return $this;
+    }
+
+    /**
+     * Gets pages
+     *
+     * @return int|null
+     */
+    public function getPages()
+    {
+        return $this->container['pages'];
+    }
+
+    /**
+     * Sets pages
+     *
+     * @param int|null $pages pages
+     *
+     * @return self
+     */
+    public function setPages($pages)
+    {
+        if (is_null($pages)) {
+            array_push($this->openAPINullablesSetToNull, 'pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['pages'] = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets imprint
+     *
+     * @return string|null
+     */
+    public function getImprint()
+    {
+        return $this->container['imprint'];
+    }
+
+    /**
+     * Sets imprint
+     *
+     * @param string|null $imprint imprint
+     *
+     * @return self
+     */
+    public function setImprint($imprint)
+    {
+        if (is_null($imprint)) {
+            array_push($this->openAPINullablesSetToNull, 'imprint');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('imprint', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['imprint'] = $imprint;
 
         return $this;
     }

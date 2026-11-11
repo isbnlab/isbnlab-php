@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **deathDate** | **\DateTime** |  | [optional]
 **birthDate** | **\DateTime** |  | [optional]
 **bio** | **string** |  | [optional]
-**photos** | **string[]** |  | [optional]
+**photos** | [**\ISBNLab\Model\AuthorPhoto[]**](AuthorPhoto.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

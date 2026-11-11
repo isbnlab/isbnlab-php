@@ -59,7 +59,8 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'average' => 'float',
-        'count' => 'int'
+        'count' => 'int',
+        'sum' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'average' => null,
-        'count' => null
+        'count' => null,
+        'sum' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'average' => true,
-        'count' => true
+        'count' => true,
+        'sum' => true
     ];
 
     /**
@@ -171,7 +174,8 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'average' => 'average',
-        'count' => 'count'
+        'count' => 'count',
+        'sum' => 'sum'
     ];
 
     /**
@@ -181,7 +185,8 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'average' => 'setAverage',
-        'count' => 'setCount'
+        'count' => 'setCount',
+        'sum' => 'setSum'
     ];
 
     /**
@@ -191,7 +196,8 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'average' => 'getAverage',
-        'count' => 'getCount'
+        'count' => 'getCount',
+        'sum' => 'getSum'
     ];
 
     /**
@@ -253,6 +259,7 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('average', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('sum', $data ?? [], null);
     }
 
     /**
@@ -361,6 +368,40 @@ class RatingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets sum
+     *
+     * @return int|null
+     */
+    public function getSum()
+    {
+        return $this->container['sum'];
+    }
+
+    /**
+     * Sets sum
+     *
+     * @param int|null $sum sum
+     *
+     * @return self
+     */
+    public function setSum($sum)
+    {
+        if (is_null($sum)) {
+            array_push($this->openAPINullablesSetToNull, 'sum');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sum', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sum'] = $sum;
 
         return $this;
     }

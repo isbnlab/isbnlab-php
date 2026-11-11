@@ -62,7 +62,9 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'string',
         'title' => 'string',
         'slug' => 'string',
-        'number' => 'string'
+        'number' => 'int',
+        'workId' => 'int',
+        'workSlug' => 'string'
     ];
 
     /**
@@ -77,7 +79,9 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => null,
         'title' => null,
         'slug' => null,
-        'number' => null
+        'number' => null,
+        'workId' => null,
+        'workSlug' => null
     ];
 
     /**
@@ -90,7 +94,9 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => true,
         'title' => true,
         'slug' => true,
-        'number' => true
+        'number' => true,
+        'workId' => true,
+        'workSlug' => true
     ];
 
     /**
@@ -183,7 +189,9 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'isbn13',
         'title' => 'title',
         'slug' => 'slug',
-        'number' => 'number'
+        'number' => 'number',
+        'workId' => 'workId',
+        'workSlug' => 'workSlug'
     ];
 
     /**
@@ -196,7 +204,9 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'setIsbn13',
         'title' => 'setTitle',
         'slug' => 'setSlug',
-        'number' => 'setNumber'
+        'number' => 'setNumber',
+        'workId' => 'setWorkId',
+        'workSlug' => 'setWorkSlug'
     ];
 
     /**
@@ -209,7 +219,9 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         'isbn13' => 'getIsbn13',
         'title' => 'getTitle',
         'slug' => 'getSlug',
-        'number' => 'getNumber'
+        'number' => 'getNumber',
+        'workId' => 'getWorkId',
+        'workSlug' => 'getWorkSlug'
     ];
 
     /**
@@ -274,6 +286,8 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('workId', $data ?? [], null);
+        $this->setIfExists('workSlug', $data ?? [], null);
     }
 
     /**
@@ -457,7 +471,7 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets number
      *
-     * @return string|null
+     * @return int|null
      */
     public function getNumber()
     {
@@ -467,7 +481,7 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number
      *
-     * @param string|null $number number
+     * @param int|null $number number
      *
      * @return self
      */
@@ -484,6 +498,74 @@ class SeriesBook implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['number'] = $number;
+
+        return $this;
+    }
+
+    /**
+     * Gets workId
+     *
+     * @return int|null
+     */
+    public function getWorkId()
+    {
+        return $this->container['workId'];
+    }
+
+    /**
+     * Sets workId
+     *
+     * @param int|null $workId workId
+     *
+     * @return self
+     */
+    public function setWorkId($workId)
+    {
+        if (is_null($workId)) {
+            array_push($this->openAPINullablesSetToNull, 'workId');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('workId', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['workId'] = $workId;
+
+        return $this;
+    }
+
+    /**
+     * Gets workSlug
+     *
+     * @return string|null
+     */
+    public function getWorkSlug()
+    {
+        return $this->container['workSlug'];
+    }
+
+    /**
+     * Sets workSlug
+     *
+     * @param string|null $workSlug workSlug
+     *
+     * @return self
+     */
+    public function setWorkSlug($workSlug)
+    {
+        if (is_null($workSlug)) {
+            array_push($this->openAPINullablesSetToNull, 'workSlug');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('workSlug', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['workSlug'] = $workSlug;
 
         return $this;
     }

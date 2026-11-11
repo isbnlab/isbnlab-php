@@ -64,7 +64,7 @@ class Author implements ModelInterface, ArrayAccess, \JsonSerializable
         'deathDate' => '\DateTime',
         'birthDate' => '\DateTime',
         'bio' => 'string',
-        'photos' => 'string[]'
+        'photos' => '\ISBNLab\Model\AuthorPhoto[]'
     ];
 
     /**
@@ -539,7 +539,7 @@ class Author implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets photos
      *
-     * @return string[]|null
+     * @return \ISBNLab\Model\AuthorPhoto[]|null
      */
     public function getPhotos()
     {
@@ -549,7 +549,7 @@ class Author implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets photos
      *
-     * @param string[]|null $photos photos
+     * @param \ISBNLab\Model\AuthorPhoto[]|null $photos photos
      *
      * @return self
      */

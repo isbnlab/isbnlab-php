@@ -58,6 +58,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
         'slug' => 'string',
         'name' => 'string',
         'role' => 'string'
@@ -71,6 +72,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'slug' => null,
         'name' => null,
         'role' => null
@@ -82,6 +84,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => true,
         'slug' => true,
         'name' => true,
         'role' => true
@@ -173,6 +176,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'slug' => 'slug',
         'name' => 'name',
         'role' => 'role'
@@ -184,6 +188,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'slug' => 'setSlug',
         'name' => 'setName',
         'role' => 'setRole'
@@ -195,6 +200,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'slug' => 'getSlug',
         'name' => 'getName',
         'role' => 'getRole'
@@ -282,6 +288,7 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('role', $data ?? [], null);
@@ -337,6 +344,40 @@ class Contributor implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets slug

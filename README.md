@@ -43,6 +43,17 @@ foreach ($book->getOtherEditions() ?? [] as $edition) {
 
 Many fields are empty for some books, so every getter can return `null`.
 
+Linked records carry ids you can look up directly (author, publisher, subject and genre lookups need a Standard or Pro plan):
+
+```php
+use ISBNLab\Api\AuthorsApi;
+
+$authorId = $book->getAuthors()[0]->getId();
+$author = (new AuthorsApi(new Client(), $config))->getAuthor((string) $authorId);
+
+echo $author->getBio(), "\n";
+```
+
 ## Errors
 
 Any response other than 2xx throws `ISBNLab\ApiException`. Its code is the HTTP status:

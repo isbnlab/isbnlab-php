@@ -58,6 +58,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
         'isbn10' => 'string',
         'isbn13' => 'string',
         'workId' => 'int',
@@ -72,7 +73,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
         'covers' => 'string[]',
         'authors' => '\ISBNLab\Model\EntityRef[]',
         'contributors' => '\ISBNLab\Model\Contributor[]',
-        'subjects' => '\ISBNLab\Model\EntityRef[]',
+        'subjects' => '\ISBNLab\Model\SubjectRef[]',
         'series' => '\ISBNLab\Model\Series',
         'genres' => '\ISBNLab\Model\EntityRef[]',
         'otherEditions' => '\ISBNLab\Model\EditionRef[]',
@@ -104,6 +105,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'isbn10' => null,
         'isbn13' => null,
         'workId' => null,
@@ -148,6 +150,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => true,
         'isbn10' => true,
         'isbn13' => true,
         'workId' => true,
@@ -272,6 +275,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'isbn10' => 'isbn10',
         'isbn13' => 'isbn13',
         'workId' => 'workId',
@@ -316,6 +320,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'isbn10' => 'setIsbn10',
         'isbn13' => 'setIsbn13',
         'workId' => 'setWorkId',
@@ -360,6 +365,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'isbn10' => 'getIsbn10',
         'isbn13' => 'getIsbn13',
         'workId' => 'getWorkId',
@@ -474,6 +480,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('isbn10', $data ?? [], null);
         $this->setIfExists('isbn13', $data ?? [], null);
         $this->setIfExists('workId', $data ?? [], null);
@@ -562,6 +569,40 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets isbn10
@@ -1042,7 +1083,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets subjects
      *
-     * @return \ISBNLab\Model\EntityRef[]|null
+     * @return \ISBNLab\Model\SubjectRef[]|null
      */
     public function getSubjects()
     {
@@ -1052,7 +1093,7 @@ class Book implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subjects
      *
-     * @param \ISBNLab\Model\EntityRef[]|null $subjects subjects
+     * @param \ISBNLab\Model\SubjectRef[]|null $subjects subjects
      *
      * @return self
      */

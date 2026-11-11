@@ -62,7 +62,7 @@ class OtherSeries implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifier' => 'string',
         'slug' => 'string',
         'name' => 'string',
-        'number' => 'string',
+        'number' => 'int',
         'kind' => 'string',
         'parent' => '\ISBNLab\Model\SeriesParent'
     ];
@@ -499,7 +499,7 @@ class OtherSeries implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets number
      *
-     * @return string|null
+     * @return int|null
      */
     public function getNumber()
     {
@@ -509,7 +509,7 @@ class OtherSeries implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number
      *
-     * @param string|null $number number
+     * @param int|null $number number
      *
      * @return self
      */

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **identifier** | **string** |  | [optional]
 **slug** | **string** |  | [optional]
 **name** | **string** |  | [optional]
-**number** | **string** |  | [optional]
+**number** | **int** |  | [optional]
 **kind** | **string** |  | [optional]
 **parent** | [**\ISBNLab\Model\SeriesParent**](SeriesParent.md) |  | [optional]
 

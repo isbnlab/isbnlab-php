@@ -5,6 +5,7 @@ docs/Api/IsbnApi.md
 docs/Api/PublishersApi.md
 docs/Api/SubjectsApi.md
 docs/Model/Author.md
+docs/Model/AuthorPhoto.md
 docs/Model/Book.md
 docs/Model/BookCover.md
 docs/Model/BookEditions.md
@@ -24,6 +25,7 @@ docs/Model/Series.md
 docs/Model/SeriesBook.md
 docs/Model/SeriesParent.md
 docs/Model/Subject.md
+docs/Model/SubjectRef.md
 lib/Api/AuthorsApi.php
 lib/Api/BooksApi.php
 lib/Api/GenresApi.php
@@ -35,6 +37,7 @@ lib/Configuration.php
 lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/Author.php
+lib/Model/AuthorPhoto.php
 lib/Model/Book.php
 lib/Model/BookCover.php
 lib/Model/BookEditions.php
@@ -55,4 +58,5 @@ lib/Model/Series.php
 lib/Model/SeriesBook.php
 lib/Model/SeriesParent.php
 lib/Model/Subject.php
+lib/Model/SubjectRef.php
 lib/ObjectSerializer.php

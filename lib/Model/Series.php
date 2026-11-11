@@ -58,10 +58,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
         'identifier' => 'string',
         'slug' => 'string',
         'name' => 'string',
-        'number' => 'string',
+        'number' => 'int',
+        'kind' => 'string',
         'parent' => '\ISBNLab\Model\SeriesParent',
         'otherSeries' => '\ISBNLab\Model\OtherSeries[]',
         'previousBook' => '\ISBNLab\Model\SeriesBook',
@@ -76,10 +78,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'identifier' => null,
         'slug' => null,
         'name' => null,
         'number' => null,
+        'kind' => null,
         'parent' => null,
         'otherSeries' => null,
         'previousBook' => null,
@@ -92,10 +96,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => true,
         'identifier' => true,
         'slug' => true,
         'name' => true,
         'number' => true,
+        'kind' => true,
         'parent' => true,
         'otherSeries' => true,
         'previousBook' => true,
@@ -188,10 +194,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'identifier' => 'identifier',
         'slug' => 'slug',
         'name' => 'name',
         'number' => 'number',
+        'kind' => 'kind',
         'parent' => 'parent',
         'otherSeries' => 'otherSeries',
         'previousBook' => 'previousBook',
@@ -204,10 +212,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'identifier' => 'setIdentifier',
         'slug' => 'setSlug',
         'name' => 'setName',
         'number' => 'setNumber',
+        'kind' => 'setKind',
         'parent' => 'setParent',
         'otherSeries' => 'setOtherSeries',
         'previousBook' => 'setPreviousBook',
@@ -220,10 +230,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'identifier' => 'getIdentifier',
         'slug' => 'getSlug',
         'name' => 'getName',
         'number' => 'getNumber',
+        'kind' => 'getKind',
         'parent' => 'getParent',
         'otherSeries' => 'getOtherSeries',
         'previousBook' => 'getPreviousBook',
@@ -271,6 +283,25 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const KIND_STORY = 'story';
+    public const KIND_COLLECTION = 'collection';
+    public const KIND_UNKNOWN = 'unknown';
+    public const KIND_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKindAllowableValues()
+    {
+        return [
+            self::KIND_STORY,
+            self::KIND_COLLECTION,
+            self::KIND_UNKNOWN,
+            self::KIND_UNKNOWN_DEFAULT_OPEN_API,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -287,10 +318,12 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('identifier', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('kind', $data ?? [], null);
         $this->setIfExists('parent', $data ?? [], null);
         $this->setIfExists('otherSeries', $data ?? [], null);
         $this->setIfExists('previousBook', $data ?? [], null);
@@ -324,6 +357,15 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'kind', must be one of '%s'",
+                $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -338,6 +380,40 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets identifier
@@ -444,7 +520,7 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets number
      *
-     * @return string|null
+     * @return int|null
      */
     public function getNumber()
     {
@@ -454,7 +530,7 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number
      *
-     * @param string|null $number number
+     * @param int|null $number number
      *
      * @return self
      */
@@ -471,6 +547,44 @@ class Series implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['number'] = $number;
+
+        return $this;
+    }
+
+    /**
+     * Gets kind
+     *
+     * @return string|null
+     */
+    public function getKind()
+    {
+        return $this->container['kind'];
+    }
+
+    /**
+     * Sets kind
+     *
+     * @param string|null $kind kind
+     *
+     * @return self
+     */
+    public function setKind($kind)
+    {
+        if (is_null($kind)) {
+            array_push($this->openAPINullablesSetToNull, 'kind');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('kind', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($kind) && !in_array($kind, $allowedValues, true)) {
+            $kind = self::KIND_UNKNOWN_DEFAULT_OPEN_API;
+        }
+        $this->container['kind'] = $kind;
 
         return $this;
     }

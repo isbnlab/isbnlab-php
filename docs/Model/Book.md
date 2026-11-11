@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** |  | [optional] [readonly]
 **isbn10** | **string** |  | [optional]
 **isbn13** | **string** |  | [optional]
 **workId** | **int** |  | [optional]
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 **covers** | **string[]** |  | [optional]
 **authors** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
 **contributors** | [**\ISBNLab\Model\Contributor[]**](Contributor.md) |  | [optional]
-**subjects** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
+**subjects** | [**\ISBNLab\Model\SubjectRef[]**](SubjectRef.md) |  | [optional]
 **series** | [**\ISBNLab\Model\Series**](Series.md) |  | [optional]
 **genres** | [**\ISBNLab\Model\EntityRef[]**](EntityRef.md) |  | [optional]
 **otherEditions** | [**\ISBNLab\Model\EditionRef[]**](EditionRef.md) |  | [optional]
